@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import React, {useEffect, useState} from 'react';
+import Camera from '@/components/Camera'
 
 export default function Home() {
 
   const [message, setMessage] = useState("Loading");
   const [people, setPeople] = useState<any[]>([]);
+  const [cameraEnabled, setCameraEnabled] = useState(false);
  
 
   useEffect(() => {
@@ -21,6 +23,10 @@ export default function Home() {
     })
   }, [])
 
+  const toggleCamera = () => {
+    setCameraEnabled(!cameraEnabled);
+  }
+
   return (
     <main>
       <div>
@@ -29,6 +35,12 @@ export default function Home() {
       {people.map((person: any, index: any) => (
         <div key={index}>{person}</div>
       ))}
+      <button onClick={toggleCamera} className="flex bg-blue-500 p-4 rounded-full">
+        {cameraEnabled ? 'Disable Camera' : 'Enable Camera'}
+      </button>
+      <div className="h-2/6 w-2/6">
+        {cameraEnabled && <Camera />}
+      </div>
     </main>
   );
 }
