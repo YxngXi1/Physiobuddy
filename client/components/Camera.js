@@ -28,8 +28,8 @@ const Camera = () => {
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
       const dataUrl = canvas.toDataURL('image/png');
       // Send dataUrl to the back-end
-      fetch('http://localhost:8080/api/process_frame', {
-        method: 'POST',
+      fetch('http://localhost:8080/video_feed', {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
