@@ -1,2 +1,2 @@
-# ignition-hacks-v4
+# IGNITION HACKS 2024
 Ignition Hacks Submission
