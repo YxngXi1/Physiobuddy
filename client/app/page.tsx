@@ -27,6 +27,15 @@ export default function Home() {
     setCameraEnabled(!cameraEnabled);
   }
 
+  const startRecording = () => {
+    fetch('http://localhost:8080/start_recording', {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+  }
+
   return (
     <main>
       <div>
@@ -41,6 +50,7 @@ export default function Home() {
       <div className="h-2/6 w-2/6">
         {cameraEnabled && <Camera />}
       </div>
+      <button className='bg-blue-500 p-4' onClick={startRecording}>start recording</button>
     </main>
   );
 }
