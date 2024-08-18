@@ -13,7 +13,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div>
+    <main>
       <Navbar />
       <div className="flex flex-col items-center justify-center min-h-screen text-center p-4">
         <h1 className="text-2xl font-bold mb-4">Recently had surgery and want to get back to your routine without emptying your wallet?</h1>
@@ -27,8 +27,8 @@ const Home: React.FC = () => {
             }}
             className="px-4 py-2 rounded hover:bg-teal-700">Learn more</button>
       </div>
-    </div>
-  )
+    </main>
+  );
 }
 
 export default Home
