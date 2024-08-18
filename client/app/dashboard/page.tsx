@@ -3,6 +3,8 @@ import Navbar from '@/components/Navbar';
 import React, { useState } from 'react';
 import Link from 'next/link';
 
+
+
 const Page: React.FC = () => {
     // State for exercise info
     const [timePeriod, setTimePeriod] = useState('');
