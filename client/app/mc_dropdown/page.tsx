@@ -1,6 +1,7 @@
 import React from 'react'
 import DropDown from '@/components/dropdownMenu_mc'
 import Navbar from '@/components/Navbar';
+import Link from 'next/link'
 
 const Page = () => {
   return (
@@ -19,6 +20,9 @@ const Page = () => {
           'Bed-Supported Knee Bends'
         ]} />
       </div>
+        <Link href='/dashboard'>
+          <button className='bg-blue-500 rounded-full p-4'>next page</button>
+        </Link>
     </div>
   )
 }

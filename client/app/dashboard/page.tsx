@@ -1,6 +1,9 @@
 'use client'
 import Navbar from '@/components/Navbar';
 import React, { useState } from 'react';
+import Link from 'next/link';
+
+
 
 const Page: React.FC = () => {
     // State for exercise info
@@ -66,19 +69,21 @@ const Page: React.FC = () => {
                                 }}
                             />
                         </label>
-                        <button style={{
-                            padding: '10px 20px',
-                            marginTop: '10px',
-                            cursor: 'pointer',
-                            backgroundColor: colors.buttonBackground,
-                            color: colors.secondary,
-                            border: 'none',
-                            borderRadius: '4px',
-                            fontSize: '16px',
-                            width: '100%',
-                        }}>
-                            Start My Physio!
-                        </button>
+                        <Link href='/exercises'>
+                            <button style={{
+                                padding: '10px 20px',
+                                marginTop: '10px',
+                                cursor: 'pointer',
+                                backgroundColor: colors.buttonBackground,
+                                color: colors.secondary,
+                                border: 'none',
+                                borderRadius: '4px',
+                                fontSize: '16px',
+                                width: '100%',
+                            }}>
+                                Start My Physio!
+                            </button> 
+                        </Link>
                     </div>
                 </div>
             </div>
