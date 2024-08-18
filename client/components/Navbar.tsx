@@ -12,7 +12,7 @@ const Navbar: React.FC = () => {
         <img src="/streaks_icon.png" alt="logo" width="10"/>
         <a href="#" className="text-gray-800 hover:text-blue-600" style={{ color: '#F3DFC1' }}>Streak: 9 days ✅</a>
         <div className="hidden md:flex items-center space-x-4">
-            <a href="#" className="text-gray-800 hover:text-blue-600" style={{ color: '#F3DFC1' }}>Dashboard</a>
+            <a href="/dashboard" className="text-gray-800 hover:text-blue-600" style={{ color: '#F3DFC1' }}>Dashboard</a>
         </div>
         <div className="md:hidden flex items-center">
             <button className="text-gray-800 focus:outline-none">
