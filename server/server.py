@@ -17,9 +17,6 @@ CORS(app)
 recording = False
 out = None
 
-recording = False
-out = None
-
 selected_exercise = ''
 
 # variables for the actual counting of exercise
@@ -38,24 +35,6 @@ def stop_recording():
 def stop_recording_after_delay(delay):
     time.sleep(delay)
     stop_recording()
-
-@app.route('/start_recording', methods=['POST'])
-def start_recording():
-    global recording, out
-    if not recording:
-        fourcc = cv.VideoWriter_fourcc(*'mp4v')
-        out = cv.VideoWriter('output.mp4', fourcc, 20.0, (640, 480))
-        recording = True
-        threading.Thread(target=stop_recording_after_delay, args=(10,)).start()
-    return jsonify({'message': 'Recording started'})
-
-def stop_recording_after_delay(delay):
-    global recording, out
-    time.sleep(delay)
-    recording = False
-    if out is not None:
-        out.release()
-        out = None
 
 def generate_frames():
     global selected_exercise, counter, stage, recording
@@ -206,12 +185,6 @@ def generate_frames():
                 cv.putText(image, 'Recording...', (10, 470), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv.LINE_AA)
             else:
                 cv.putText(image, 'Not Recording', (10, 470), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv.LINE_AA)
-            
-            if recording and out is not None:
-                out.write(image)
-                cv.putText(image, 'Recording...', (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv.LINE_AA)
-            else:
-                cv.putText(image, 'Not Recording', (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv.LINE_AA)
             
             ret, buffer = cv.imencode('.jpg', image)
             frame = buffer.tobytes()
