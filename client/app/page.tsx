@@ -1,56 +1,34 @@
 'use client'
 
 import Image from "next/image";
-import React, {useEffect, useState} from 'react';
-import Camera from '@/components/Camera'
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Navbar from '@/components/Navbar'
 
-export default function Home() {
+const Home: React.FC = () => {
+  const router = useRouter();
 
-  const [message, setMessage] = useState("Loading");
-  const [people, setPeople] = useState<any[]>([]);
-  const [cameraEnabled, setCameraEnabled] = useState(false);
- 
-
-  useEffect(() => {
-    fetch("http://localhost:8080/api/home")
-    .then((response) => response.json())
-    .then((data) => {
-
-      setMessage(data.message);
-      setPeople(data.people);
-
-      console.log(data)
-    })
-  }, [])
-
-  const toggleCamera = () => {
-    setCameraEnabled(!cameraEnabled);
-  }
-
-  const startRecording = () => {
-    fetch('http://localhost:8080/start_recording', {
-        method: 'POST'
-    })
-    .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
-  }
+  const handleRedirect = () => {
+    router.push('/mc_dropdown');
+  };
 
   return (
     <main>
-      <div>
-        {message}
-      </div>  
-      {people.map((person: any, index: any) => (
-        <div key={index}>{person}</div>
-      ))}
-      <button onClick={toggleCamera} className="flex bg-blue-500 p-4 rounded-full">
-        {cameraEnabled ? 'Disable Camera' : 'Enable Camera'}
-      </button>
-      <div className="h-2/6 w-2/6">
-        {cameraEnabled && <Camera />}
+      <Navbar />
+      <div className="flex flex-col items-center justify-center min-h-screen text-center p-4">
+        <h1 className="text-2xl font-bold mb-4">Recently had surgery and want to get back to your routine without emptying your wallet?</h1>
+        <h2 className="text-2xl font-bold mb-4 text-teal-800">Discover affordable, personalized recovery with us!</h2>
+        <p className="text-lg mb-4 w-3/4">Post-surgery physiotherapy can cost up to $2,500 with limited in-person support. Our online physiotherapy service offers a cost-effective and accessible solution, providing personalized care and reminders at a fraction of the price. With 2.4 billion people needing rehab globally and significant gaps in access, we deliver essential support to help you recover efficiently and affordably, reducing complications and getting you back to your routine faster.</p>
+        <button 
+            onClick={handleRedirect}
+            style={{
+                backgroundColor: '#246A73', 
+                color: '#F3DFC1'
+            }}
+            className="px-4 py-2 rounded hover:bg-teal-700">Learn more</button>
       </div>
-      <button className='bg-blue-500 p-4' onClick={startRecording}>start recording</button>
     </main>
   );
 }
+
+export default Home
