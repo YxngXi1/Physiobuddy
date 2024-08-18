@@ -69,7 +69,7 @@ const Page: React.FC = () => {
                                 }}
                             />
                         </label>
-                        <Link href='/exercises'>
+                        <Link href='/exercise-details'>
                             <button style={{
                                 padding: '10px 20px',
                                 marginTop: '10px',
