@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
       <nav className="w-full bg-gray-800 px-6 py-3">
     <div className="flex justify-between items-center">
         <a href="#" className="text-2xl font-bold" style={{ color: '#F3DFC1' }}>MyWebsite</a>
-        <img src="public/streaks_icon.png" alt="logo" width="10"/>
+        <img src="/streaks_icon.png" alt="logo" width="10"/>
         <a href="#" className="text-gray-800 hover:text-blue-600" style={{ color: '#F3DFC1' }}>Streak: 9 days ✅</a>
         <div className="hidden md:flex items-center space-x-4">
             <a href="#" className="text-gray-800 hover:text-blue-600" style={{ color: '#F3DFC1' }}>Dashboard</a>
